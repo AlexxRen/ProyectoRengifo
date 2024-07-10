@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoRengifo.Views.Persona.PersonaPage"
+             xmlns:local="clr-namespace:ProyectoRengifo.ViewModels.Person"
+             xmlns:models="clr-namespace:ProyectoRengifo.Models"
+             Title="Persona">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar" Command="{Binding OnAddPersonaCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <RefreshView x:DataType="local:PersonaPageViewModel"
+                     Command="{Binding LoadPersonaCommand}"
+                     IsRefreshing="{Binding Isbusy}">
+            <CollectionView ItemsSource="{Binding PersonaList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Persona">
+                        <StackLayout Padding="2">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Eliminar"
+                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type local:PersonaPageViewModel}}, Path=PersonaTappedDeleteCommand}"
+                                                   CommandParameter="{Binding .}"
+                                                   BackgroundColor="#DF5252" />
+                                        <SwipeItem IsDestructive="True" Text="Cerrar" BackgroundColor="Green"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                        <RowDefinition Height="30" />
+                                    </Grid.RowDefinitions>
+                                    
+                                    <Grid.ColumnDefinitions>
+                                        
+                                        <ColumnDefinition Width="140" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="70" />
+                                        
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Nombre}" FontAttributes="Bold" FontSize="Large"/>
+                                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Cedula}" FontSize="Medium" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding FechaNacimiento, StringFormat='{0:dd/MM/yyyy}'}" FontSize="Medium" />
+
+                                    <Image Source="edit.png" Grid.Row="0" Grid.Column="2" WidthRequest="30" HeightRequest="30" HorizontalOptions="End">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:PersonaPageViewModel}}, Path=PersonaTappedEditCommand}"
+                                                                 CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </SwipeView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
+</ContentPage>

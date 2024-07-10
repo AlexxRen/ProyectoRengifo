@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>   
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoRengifo.Views.Main.LoginPage"
+             Title="LoginPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#e2e2e2">
+
+
+    <Grid RowDefinitions=".3*,.7*" BackgroundColor="#e2e2e2">
+        <Image Aspect="AspectFill" Source="fondo.png"/>
+        <Grid BackgroundColor="#76777c" Opacity=".9"/>
+        <Grid ColumnDefinitions= "*,*" >
+            <Image Source="ant.png"
+           HeightRequest="120"
+           Aspect="AspectFit"/>
+        </Grid>
+
+        <Grid Grid.Row="1" >
+            <RoundRectangle Margin="-5,-30,-5,-2"
+                            CornerRadius="30,30,0,0"
+                            Fill="White"/>
+            <VerticalStackLayout Margin="30,0,30,0">
+                <Label FontAttributes="Bold"
+                       FontSize="Medium"
+                       Text="Bienvenido"
+                       TextColor="#2D2D2D"/>
+                <Label Text="Inicie sesion para Continuar"
+                       TextColor="#a3a3a4"/>
+                <Grid Margin="0,30,0,0" ColumnDefinitions=".2*,.8*">
+                    <RoundRectangle Background="#edebf6"
+                                    CornerRadius="10"
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60"/>
+                    <Image HorizontalOptions="Center">
+                        <Image.Source>
+                            <FontImageSource FontFamily="AwesomeSolid"
+                                             Glyph="&#xf0e0;"
+                                             Size="22"
+                                             Color="#76777c"/>
+                        </Image.Source>
+                    </Image>
+                    <Entry Grid.Column="1"
+                           Placeholder="Usuario"
+                           TextColor="Black"
+                           Text="{Binding UserName}" 
+                           VerticalOptions="Center" />
+                </Grid>
+
+                <Grid Margin="0,30,0,0" ColumnDefinitions=".2*,.8*">
+                    <RoundRectangle Background="#edebf6"
+                                    CornerRadius="10"
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60"/>
+                    <Image HorizontalOptions="Center">
+                        <Image.Source>
+                            <FontImageSource FontFamily="AwesomeSolid"
+                                             Glyph="&#xf084;"
+                                             Size="22"
+                                             Color="#76777c"/>
+                        </Image.Source>
+                    </Image>
+                    <Entry Grid.Column="1"
+                           Placeholder="Contraseña"
+                           IsPassword="True"
+                           TextColor="Black"
+                           Text="{Binding Password}" 
+                           VerticalOptions="Center"/>
+                </Grid>
+                <Button Margin="0,20,0,0"
+                        BackgroundColor="#0f1b36"
+                        HeightRequest="60"
+                        Text="Iniciar Sesion"
+                        TextColor="#FBF6FD"
+                        Command="{Binding LoginCommand}" />
+
+                <Label Margin="0,20,0,-10"
+                       HorizontalOptions="Center"
+                       Text="Olvido su Contraseña?"
+                       TextColor="Blue"
+                       TextDecorations="Underline"/>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+  </ContentPage>

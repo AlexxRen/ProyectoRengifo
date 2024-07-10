@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoRengifo.Views.Persona.AddPersonsaPage"
+             xmlns:local="clr-namespace:ProyectoRengifo.ViewModels.Persona"
+             Title="AddPersonsaPage"
+             BackgroundColor="Black">
+
+    <StackLayout Spacing="5" Padding="15" Margin="10">
+
+        <VerticalStackLayout>
+            <Label Text="Nombre" FontSize="Medium" />
+            <Entry Text="{Binding Persona.Nombre, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="{Binding NombreError}" IsVisible="{Binding ShowNombreError}" TextColor="Red" FontSize="Small"/>
+            <BoxView HeightRequest="0.5" Color="Gray"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Fecha Nacimiento" FontSize="Medium" />
+            <DatePicker Date="{Binding Persona.FechaNacimiento, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="{Binding FechaNacimientoError}" IsVisible="{Binding ShowFechaNacimientoError}" TextColor="Red" FontSize="Small"/>
+            <BoxView HeightRequest="0.5" Color="Gray"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Cédula" FontSize="Medium" />
+            <Entry Text="{Binding Persona.Cedula, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="{Binding CedulaError}" IsVisible="{Binding ShowCedulaError}" TextColor="Red" FontSize="Small"/>
+            <BoxView HeightRequest="0.5" Color="Gray"/>
+        </VerticalStackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Guardar" Command="{Binding SavePersonaCommand}" HorizontalOptions="FillAndExpand"/>
+            <Button Text="Cancelar" BackgroundColor="#DF5252" Command="{Binding OnCancelCommand}" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ProyectoRengifo.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:ProyectoRengifo.Views.Main"
+    xmlns:models="clr-namespace:ProyectoRengifo.Models.Mod_Logic"
+    xmlns:vAgente="clr-namespace:ProyectoRengifo.Views.Agente"
+    xmlns:vCamara="clr-namespace:ProyectoRengifo.Views.Camara"
+    xmlns:vPersona="clr-namespace:ProyectoRengifo.Views.Persona"
+    xmlns:vRole="clr-namespace:ProyectoRengifo.Views.Role"
+    xmlns:vSiniestro="clr-namespace:ProyectoRengifo.Views.Siniestro"
+    xmlns:vZona="clr-namespace:ProyectoRengifo.Views.Zona"
+
+    Shell.FlyoutBehavior="Disabled"
+    Title="ProyectoRengifo">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate  views:LoginPage}"
+        FlyoutItemIsVisible="False"
+        Shell.FlyoutBehavior="Disabled"
+        Route="LoginPage" />
+
+
+    <FlyoutItem Route="HomePage" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Home" Icon="{x:Static models:Icon.Dashboard}" ContentTemplate="{DataTemplate views:HomePage}"/>
+        <ShellContent Title="Contacto" Icon="{x:Static models:Icon.ContactUs}" ContentTemplate="{DataTemplate views:ContactPage}"/>
+        <ShellContent Title="Acerca De" Icon="{x:Static models:Icon.AboutUs}" ContentTemplate="{DataTemplate views:AboutPage}"/>
+        <ShellContent Title="Add Persona" Icon="{x:Static models:Icon.AboutUs}" ContentTemplate="{DataTemplate vPersona:AddPersonsaPage}"/>
+        <ShellContent Title="Persona" Icon="{x:Static models:Icon.AboutUs}" ContentTemplate="{DataTemplate vPersona:PersonaPage}"/>
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <StackLayout Padding="20">
+            <Button Text="Salir Sesion" Command="{Binding SignOutCommand}" BackgroundColor="#1D8348"/>
+        </StackLayout>
+    </Shell.FlyoutFooter>
+
+</Shell>
